@@ -18,21 +18,21 @@ You can interact with the api by referencing the Endpoints section below
 ## Database
 Built using SQLite and SQLAlchemy, the database is created in the initializer in the utilities section, and imported from database.py to avoid circular importing issues. The tables in the database are configured in the app/models/models.py file according to the requirements. By using the model class provided by SQLAlchemy, we can build the tables (along with their internal data types, relationships, and **primary** /  *foreign* keys) as python data structures which can easily interact with both systems. Interaction with the database is all governed by the abstraction layer provided by SQLA. The classes are:
 
-**Trader** (includes backreference from trade object so program can call trade.trader)
-Table name: 'traders'
+**Trader** (includes backreference from trade object so program can call trade.trader)\
+Table name: 'traders'\
 
-**trader_id** = Integer
+**trader_id** = Integer\
 	name = String(10)
 
-**Trade**
-Table name: 'trades' 
-**trade_id** = Integer
-currency_pair = String(10)
-amount  =  Float
-price  =  Float
-trade_date  =  DateTime
-identifier  =  String
-*trader_id*  =  Integer (ForeignKey-> traders.trader_id)
+**Trade**\
+Table name: 'trades'\
+**trade_id** = Integer\
+currency_pair = String(10)\
+amount  =  Float\
+price  =  Float\
+trade_date  =  DateTime\
+identifier  =  String\
+*trader_id*  =  Integer (ForeignKey-> traders.trader_id)\
 
 (no columns are nullable for both tables)
 
@@ -41,8 +41,8 @@ Interaction with the database all happens in the routes/api_handlers.py file. Ea
 
 ## Endpoints
 
-- **Add Trader** POST request */api/add_trader*
-Add a new trader to the traders table
+- **Add Trader** POST request */api/add_trader* \
+Add a new trader to the traders table\
 POST
 
 ```json
@@ -58,8 +58,8 @@ Successful (201)
   "trader_id": int
 }
 ```
-- **Add Trade** POST request */api/add_trade*
-Add a new trade to the trades table
+- **Add Trade** POST request */api/add_trade* \
+Add a new trade to the trades table\
 POST
 ```json
 {
@@ -77,16 +77,16 @@ Successful (201)
   "trade_id": int
 }
 ```
-- **Get Trader** GET request */api/get_trader*
-Retrieve a trader from the traders table
-Additional functionality to query by either name, trader_id, or both 
-GET Query Parameters
-	name : string
-	or
-	trader_id: int
-	or
-	name : string
-	trader_id: int
+- **Get Trader** GET request */api/get_trader* \
+Retrieve a trader from the traders table\
+Additional functionality to query by either name, trader_id, or both \
+GET Query Parameters\
+	name : string\
+	or\
+	trader_id: int\
+	or\
+	name : string\
+	trader_id: int\
 RESPONSE
 Successful (200)
 ```json
@@ -95,18 +95,18 @@ Successful (200)
   "trader_id": int
 }
 ```
-- **Get Trade(s)** GET request */api/get_trade*
-Retrieve a trade or multiple trades from the trades table
-Additional functionality to query by:
-	trader id and date: returns list of trades from given trader from specified date
-	trader id: returns list of all trades by given trader
-GET Query Parameters
-	trade_id: int
-	or
-	trader_id: string
-	date: DateTime
-	or
-	trader_id
+- **Get Trade(s)** GET request */api/get_trade* \
+Retrieve a trade or multiple trades from the trades table\
+Additional functionality to query by:\
+	trader id and date: returns list of trades from given trader from specified date\
+	trader id: returns list of all trades by given trader\
+GET Query Parameters\
+	trade_id: int\
+	or\
+	trader_id: string\
+	date: DateTime\
+	or\
+	trader_id\
 RESPONSE
 Successful (200)
 ```json
@@ -120,5 +120,5 @@ Successful (200)
     "trade_date" DateTime
 }
 ```
-or
+or\
 Array of trades sorted by trade_date
