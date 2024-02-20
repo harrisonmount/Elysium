@@ -19,7 +19,7 @@ You can interact with the api by referencing the Endpoints section below
 Built using SQLite and SQLAlchemy, the database is created in the initializer in the utilities section, and imported from database.py to avoid circular importing issues. The tables in the database are configured in the app/models/models.py file according to the requirements. By using the model class provided by SQLAlchemy, we can build the tables (along with their internal data types, relationships, and **primary** /  *foreign* keys) as python data structures which can easily interact with both systems. Interaction with the database is all governed by the abstraction layer provided by SQLA. The classes are:
 
 **Trader** (includes backreference from trade object so program can call trade.trader)\
-Table name: 'traders'\
+Table name: 'traders'
 
 **trader_id** = Integer\
 	name = String(10)
@@ -32,7 +32,7 @@ amount  =  Float\
 price  =  Float\
 trade_date  =  DateTime\
 identifier  =  String\
-*trader_id*  =  Integer (ForeignKey-> traders.trader_id)\
+*trader_id*  =  Integer (ForeignKey-> traders.trader_id)
 
 (no columns are nullable for both tables)
 
